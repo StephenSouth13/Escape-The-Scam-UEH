@@ -15,7 +15,6 @@ export interface GameState {
   mssv: string
   currentScene: GameScene
   currentLevel: number
-  cyberIQ: number
   lives: number
   completedLevels: number[]
 }
@@ -26,7 +25,6 @@ export default function GamePage() {
     mssv: "",
     currentScene: "login",
     currentLevel: 1,
-    cyberIQ: 0,
     lives: 3,
     completedLevels: [],
   })
@@ -76,19 +74,17 @@ export default function GamePage() {
         return (
           <PlatformerGame
             gameState={gameState}
-            onLevelComplete={(cyberIQGained) => {
-              const newCyberIQ = gameState.cyberIQ + cyberIQGained
+            onLevelComplete={() => {
               const newCompletedLevels = [...gameState.completedLevels, gameState.currentLevel]
 
               if (gameState.currentLevel >= 4) {
                 // Beat final level
-                updateGameState({ cyberIQ: newCyberIQ, completedLevels: newCompletedLevels })
+                updateGameState({ completedLevels: newCompletedLevels })
                 changeScene("win")
               } else {
                 // Move to next level
                 updateGameState({
                   currentLevel: gameState.currentLevel + 1,
-                  cyberIQ: newCyberIQ,
                   completedLevels: newCompletedLevels,
                 })
                 MusicManager.playLevelMusic(gameState.currentLevel + 1)
@@ -109,7 +105,6 @@ export default function GamePage() {
                 playerName: "",
                 currentScene: "login",
                 currentLevel: 1,
-                cyberIQ: 0,
                 lives: 3,
                 completedLevels: [],
               })
@@ -125,7 +120,6 @@ export default function GamePage() {
                 playerName: "",
                 currentScene: "login",
                 currentLevel: 1,
-                cyberIQ: 0,
                 lives: 3,
                 completedLevels: [],
               })

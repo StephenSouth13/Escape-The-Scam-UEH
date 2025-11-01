@@ -12,7 +12,7 @@ import MiniRadar from "@/components/mini-radar"
 
 interface PlatformerGameProps {
   gameState: GameState
-  onLevelComplete: (cyberIQGained: number) => void
+  onLevelComplete: () => void
   onGameOver: () => void
   updateGameState: (updates: Partial<GameState>) => void
 }
@@ -89,8 +89,8 @@ export default function PlatformerGame({
     y: 300,
     vx: 0,
     vy: 0,
-    width: 80,
-    height: 120,
+    width: 100,
+    height: 150,
     grounded: false,
     facingRight: true,
     animationState: "idle",
@@ -107,7 +107,6 @@ export default function PlatformerGame({
   const [showQuiz, setShowQuiz] = useState(false)
   const [currentEnemy, setCurrentEnemy] = useState<Enemy | null>(null)
   const [levelComplete, setLevelComplete] = useState(false)
-  const cyberIQGainedRef = useRef(0)
   const [isMuted, setIsMuted] = useState(false)
   const [showTutorial, setShowTutorial] = useState(false)
 
@@ -161,8 +160,8 @@ export default function PlatformerGame({
       y: 300,
       vx: 0,
       vy: 0,
-      width: 80,
-    height: 120,
+      width: 100,
+    height: 150,
       grounded: false,
       facingRight: true,
       animationState: "idle",
@@ -217,7 +216,7 @@ export default function PlatformerGame({
       })
     }
 
-    patrolEnemiesRef.current = [...newPatrolEnemies, ...extras]
+    patrolEnemiesRef.current = newPatrolEnemies
 
     chestsRef.current = currentLevelData.current.chests.map((c) => ({ ...c }))
     decorationsRef.current = []
@@ -586,8 +585,6 @@ export default function PlatformerGame({
 
           if (chest.type === "life") {
             updateGameState({ lives: gameState.lives + 1 })
-          } else if (chest.type === "data") {
-            cyberIQGainedRef.current += 5
           } else if (chest.type === "power") {
             // power chest: grant life or data; skip removed
           }
@@ -614,12 +611,10 @@ export default function PlatformerGame({
         if (portalCollision && !levelComplete) {
           console.log("[v0] Portal collision detected! Player at:", playerRef.current.x, playerRef.current.y)
           console.log("[v0] Portal at:", portal.x, portal.y, "Size:", portal.width, portal.height)
-          const finalScore = cyberIQGainedRef.current
           setLevelComplete(true)
           SoundManager.playSuccess()
-          cyberIQGainedRef.current = 0
           setTimeout(() => {
-            onLevelComplete(finalScore)
+            onLevelComplete()
           }, 1500)
         }
       }
@@ -951,7 +946,6 @@ export default function PlatformerGame({
   const handleQuizAnswer = (correct: boolean) => {
     if (correct && currentEnemy) {
       enemiesRef.current = enemiesRef.current.map((e) => (e.id === currentEnemy.id ? { ...e, defeated: true } : e))
-      cyberIQGainedRef.current += 10
       SoundManager.playSuccess()
     } else {
       SoundManager.playError()
@@ -1015,9 +1009,6 @@ export default function PlatformerGame({
                   <Heart key={i} className="w-4 h-4 fill-neon-magenta text-neon-magenta" />
                 ))}
               </div>
-            </div>
-            <div>
-              CYBER IQ: <span className="text-neon-green">{gameState.cyberIQ + cyberIQGainedRef.current}</span>
             </div>
                       </div>
 
@@ -1138,7 +1129,6 @@ export default function PlatformerGame({
             <div className="text-4xl">🎉</div>
             <h2 className="text-3xl font-bold text-neon-green">HOÀN THÀNH!</h2>
             <p className="text-foreground/90">Bạn đã vượt qua tầng {gameState.currentLevel}!</p>
-            <div className="text-2xl font-bold text-neon-cyan">+{cyberIQGainedRef.current} Cyber IQ</div>
           </div>
         </div>
       )}

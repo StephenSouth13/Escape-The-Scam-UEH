@@ -197,9 +197,6 @@ export default function ChatQuizPopup({ question, onAnswer, avatarUrl }: ChatQui
                     </div>
                   </div>
                   <div className="text-sm text-foreground/90 leading-relaxed">{question.explanation}</div>
-                  {selectedAnswer === question.correctAnswer && (
-                    <div className="mt-3 text-neon-cyan font-bold text-sm">+10 Cyber IQ</div>
-                  )}
                 </div>
               </motion.div>
             )}
