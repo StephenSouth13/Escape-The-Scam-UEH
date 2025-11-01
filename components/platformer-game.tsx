@@ -1035,7 +1035,7 @@ export default function PlatformerGame({
         <ChatQuizPopup
           question={currentLevelData.current.questions[currentEnemy.questionId]}
           onAnswer={handleQuizAnswer}
-          avatarUrl={questionBoxImageRef.current ? questionBoxImageRef.current.src : undefined}
+          avatarUrl={"https://cdn.builder.io/api/v1/image/assets%2Fa1364f8719984147b2ab8641706334f8%2F3e15b926d5b5482c8c2da90d632e6bcd?format=webp&width=800"}
         />
       )}
 
