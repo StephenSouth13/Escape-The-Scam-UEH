@@ -766,7 +766,8 @@ export default function PlatformerGame({
           ctx.shadowBlur = 30
           ctx.shadowColor = "#0066ff"
 
-          if (enemy.type === "laptop" && questionBoxImageRef.current) {
+          if (typeof enemy.questionId === 'number' && questionBoxImageRef.current) {
+            // Use question box avatar for any enemy that has a question
             ctx.shadowBlur = 30
             ctx.shadowColor = "#0066ff"
             ctx.drawImage(questionBoxImageRef.current, enemy.x, enemy.y, enemy.width, enemy.height)
@@ -818,10 +819,19 @@ export default function PlatformerGame({
         ctx.shadowBlur = isNear ? 40 : 25
         ctx.shadowColor = "#ff0000"
 
-        if (enemy.type === "quiet_drone" && quietDroneImageRef.current) {
+        if ((enemy.type === "quiet_drone" || enemy.type === "drone") && quietDroneImageRef.current) {
           ctx.shadowBlur = isNear ? 40 : 25
           ctx.shadowColor = isNear ? "#ff3333" : "#ff0066"
-          ctx.drawImage(quietDroneImageRef.current, enemy.x, enemy.y + bounce, enemy.width, enemy.height)
+          // Flip horizontally if moving left
+          if (enemy.patrolDirection < 0) {
+            ctx.save()
+            ctx.translate(enemy.x + enemy.width / 2, enemy.y + bounce + enemy.height / 2)
+            ctx.scale(-1, 1)
+            ctx.drawImage(quietDroneImageRef.current, -enemy.width / 2, -enemy.height / 2, enemy.width, enemy.height)
+            ctx.restore()
+          } else {
+            ctx.drawImage(quietDroneImageRef.current, enemy.x, enemy.y + bounce, enemy.width, enemy.height)
+          }
           ctx.shadowBlur = 0
 
           ctx.strokeStyle = isNear ? "#ffff00" : "#ffffff"
@@ -830,7 +840,15 @@ export default function PlatformerGame({
         } else if (scammerImageRef.current) {
           ctx.shadowBlur = isNear ? 40 : 25
           ctx.shadowColor = isNear ? "#ff3333" : "#ff0066"
-          ctx.drawImage(scammerImageRef.current, enemy.x, enemy.y + bounce, enemy.width, enemy.height)
+          if (enemy.patrolDirection < 0) {
+            ctx.save()
+            ctx.translate(enemy.x + enemy.width / 2, enemy.y + bounce + enemy.height / 2)
+            ctx.scale(-1, 1)
+            ctx.drawImage(scammerImageRef.current, -enemy.width / 2, -enemy.height / 2, enemy.width, enemy.height)
+            ctx.restore()
+          } else {
+            ctx.drawImage(scammerImageRef.current, enemy.x, enemy.y + bounce, enemy.width, enemy.height)
+          }
           ctx.shadowBlur = 0
 
           ctx.strokeStyle = isNear ? "#ffff00" : "#ffffff"
