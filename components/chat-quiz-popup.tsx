@@ -155,11 +155,11 @@ export default function ChatQuizPopup({ question, onAnswer, avatarUrl }: ChatQui
                     }`}
                   >
                     {msg.sender === "system" && (
-                      <div className="text-xs font-bold mb-1">
+                      <div className="text-[10px] xs:text-xs font-bold mb-1">
                         {msg.icon} CẢNH BÁO
                       </div>
                     )}
-                    <p className="text-xs sm:text-sm text-foreground/90 leading-relaxed">{msg.text}</p>
+                    <p className="text-[10px] xs:text-xs sm:text-sm text-foreground/90 leading-relaxed">{msg.text}</p>
                   </div>
 
                   {msg.sender === "villain" && !avatarUrl && (
