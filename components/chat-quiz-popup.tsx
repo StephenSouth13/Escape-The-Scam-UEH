@@ -181,12 +181,12 @@ export default function ChatQuizPopup({ question, onAnswer, avatarUrl }: ChatQui
                   <Button
                     key={index}
                     onClick={() => handleAnswerClick(index)}
-                    className="w-full h-auto py-3 px-3 sm:py-4 sm:px-4 bg-primary/10 hover:bg-primary/20 border border-primary/30 hover:border-primary/50 transition-all text-left rounded-xl flex items-start gap-2 sm:gap-3 whitespace-normal"
+                    className="w-full h-auto py-2 px-2.5 xs:py-2.5 xs:px-3 sm:py-3 sm:px-4 bg-primary/10 hover:bg-primary/20 border border-primary/30 hover:border-primary/50 transition-all text-left rounded-lg xs:rounded-xl flex items-start gap-1.5 xs:gap-2 sm:gap-3 whitespace-normal"
                   >
-                    <span className="font-bold text-neon-cyan text-xs sm:text-sm flex-shrink-0 mt-0.5">
+                    <span className="font-bold text-neon-cyan text-[10px] xs:text-xs sm:text-sm flex-shrink-0 mt-0.5">
                       {String.fromCharCode(65 + index)}.
                     </span>
-                    <span className="text-foreground/90 text-xs sm:text-sm leading-relaxed text-wrap">
+                    <span className="text-foreground/90 text-[10px] xs:text-xs sm:text-sm leading-relaxed text-wrap">
                       {answer}
                     </span>
                   </Button>
@@ -206,7 +206,7 @@ export default function ChatQuizPopup({ question, onAnswer, avatarUrl }: ChatQui
                 >
                   <div className="flex items-center gap-1.5 xs:gap-2 mb-1.5 xs:mb-2 sm:mb-3">
                     <div className="text-xl xs:text-2xl sm:text-3xl flex-shrink-0">
-                      {selectedAnswer === question.correctAnswer ? "✅" : "��"}
+                      {selectedAnswer === question.correctAnswer ? "✅" : "❌"}
                     </div>
                     <div className="font-bold text-sm xs:text-base sm:text-lg">
                       {selectedAnswer === question.correctAnswer ? "Chính xác!" : "Sai rồi!"}
