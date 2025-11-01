@@ -32,28 +32,28 @@ export default function WinScene({ gameState, onRestart }: WinSceneProps) {
   const rank = getRank(gameState.cyberIQ)
 
   return (
-    <div className="relative min-h-screen flex items-center justify-center p-4">
+    <div className="relative min-h-screen flex items-center justify-center p-6 overflow-hidden">
       {/* Background */}
-      <div className="absolute inset-0 opacity-30">
+      <div className="absolute inset-0">
         <img
           src="/cyberpunk-city-skyline-at-dawn-with-bright-lights-.jpg"
           alt="Victory"
-          className="w-full h-full object-cover"
+          className="w-full h-full object-cover scale-105 blur-sm brightness-[0.45]"
         />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/60 to-black/80 backdrop-blur-sm" />
       </div>
 
-      <div className="absolute inset-0 bg-gradient-to-b from-background/90 via-background/80 to-background/90" />
-
-      {/* Celebration effects */}
+      {/* Floating particles */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        {[...Array(30)].map((_, i) => (
+        {[...Array(40)].map((_, i) => (
           <motion.div
             key={i}
             initial={{ opacity: 0, y: 0 }}
-            animate={{ opacity: [1, 0], y: -100 }}
-            transition={{ duration: 3, delay: i * 0.1, repeat: Number.POSITIVE_INFINITY }}
-            className="absolute w-3 h-3 bg-neon-cyan rounded-full"
+            animate={{ opacity: [1, 0], y: -200 }}
+            transition={{ duration: 4, delay: i * 0.1, repeat: Infinity }}
+            className="absolute w-2 h-2 rounded-full"
             style={{
+              backgroundColor: Math.random() > 0.5 ? "#00ffff" : "#ff00c8",
               left: `${Math.random() * 100}%`,
               bottom: 0,
             }}
@@ -61,159 +61,137 @@ export default function WinScene({ gameState, onRestart }: WinSceneProps) {
         ))}
       </div>
 
-      {/* Content */}
-      <div className="relative z-10 max-w-4xl w-full space-y-8">
-        {/* Victory banner */}
+      {/* Main content */}
+      <div className="relative z-10 max-w-4xl w-full space-y-10">
+        {/* Title */}
         <motion.div
-          initial={{ scale: 0 }}
-          animate={{ scale: 1 }}
+          initial={{ scale: 0.8, opacity: 0 }}
+          animate={{ scale: 1, opacity: 1 }}
           transition={{ type: "spring", stiffness: 100 }}
           className="text-center space-y-4"
         >
-          <Trophy className="w-32 h-32 text-neon-cyan mx-auto animate-bounce" />
-          <h1 className="text-6xl md:text-8xl font-bold text-neon-cyan glitch">CHIẾN THẮNG!</h1>
-          <div className="h-2 w-64 mx-auto bg-gradient-to-r from-transparent via-neon-magenta to-transparent" />
+          <Trophy className="w-28 h-28 text-neon-cyan mx-auto drop-shadow-[0_0_20px_#00ffff]" />
+          <h1 className="text-7xl md:text-8xl font-extrabold tracking-wide text-transparent bg-clip-text bg-gradient-to-r from-neon-cyan via-white to-neon-magenta drop-shadow-[0_0_25px_#00ffff]">
+            CHIẾN THẮNG
+          </h1>
+          <div className="h-1 w-80 mx-auto bg-gradient-to-r from-neon-magenta via-white to-neon-cyan rounded-full" />
         </motion.div>
 
+        {/* Player Info */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.3 }}
-          className="glass-panel rounded-lg p-8 border-2 border-neon-cyan/50 space-y-4"
+          className="grid md:grid-cols-2 gap-6"
         >
-          <div className="grid md:grid-cols-2 gap-4">
-            <div className="flex items-center gap-3 bg-background/50 rounded-lg p-4">
-              <User className="w-6 h-6 text-neon-cyan flex-shrink-0" />
+          {[
+            {
+              icon: <User className="w-6 h-6 text-neon-cyan" />,
+              label: "Tên Sinh Viên",
+              value: gameState.playerName,
+              color: "text-neon-cyan",
+            },
+            {
+              icon: <Hash className="w-6 h-6 text-neon-magenta" />,
+              label: "MSSV",
+              value: gameState.mssv || "Chưa cập nhật",
+              color: "text-neon-magenta",
+            },
+          ].map((item, idx) => (
+            <div
+              key={idx}
+              className="flex items-center gap-3 bg-black/40 backdrop-blur-lg rounded-xl border border-white/10 p-5 shadow-lg hover:border-neon-cyan/50 transition-all"
+            >
+              {item.icon}
               <div>
-                <p className="text-xs text-muted-foreground uppercase">Tên Sinh Viên</p>
-                <p className="text-xl font-bold text-neon-cyan">{gameState.playerName}</p>
+                <p className="text-xs uppercase tracking-wider text-gray-400">{item.label}</p>
+                <p className={`text-xl font-bold ${item.color}`}>{item.value}</p>
               </div>
             </div>
-            <div className="flex items-center gap-3 bg-background/50 rounded-lg p-4">
-              <Hash className="w-6 h-6 text-neon-magenta flex-shrink-0" />
-              <div>
-                <p className="text-xs text-muted-foreground uppercase">MSSV (Mã Số Sinh Viên)</p>
-                <p className="text-xl font-bold text-neon-magenta">{gameState.mssv || "Chưa cập nhật"}</p>
-              </div>
-            </div>
-          </div>
+          ))}
         </motion.div>
 
-        {/* Story conclusion */}
+        {/* Story */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.5 }}
-          className="glass-panel rounded-lg p-8 space-y-6"
+          transition={{ delay: 0.6 }}
+          className="bg-black/40 backdrop-blur-lg border border-white/10 rounded-2xl p-8 space-y-5 shadow-xl"
         >
           <TypewriterText
             text={`Chúc mừng ${gameState.playerName}! Bạn đã giải cứu Linh thành công và giúp cô ấy thoát khỏi những cạm bẫy lừa đảo trực tuyến.`}
-            className="text-xl md:text-2xl text-center text-foreground/90"
-            speed={40}
+            className="text-xl md:text-2xl text-center text-white font-medium leading-relaxed"
+            speed={35}
           />
-
-          <div className="pt-4">
-            <TypewriterText
-              text="Nhờ vào kiến thức và sự thận trọng của bạn, cả hai đã an toàn rời khỏi khách sạn bí ẩn. Linh đã học được bài học quý giá về an toàn mạng."
-              className="text-base md:text-lg text-center text-muted-foreground"
-              speed={30}
-            />
-          </div>
+          <TypewriterText
+            text="Nhờ vào kiến thức và sự thận trọng của bạn, cả hai đã an toàn rời khỏi khách sạn bí ẩn. Linh đã học được bài học quý giá về an toàn mạng."
+            className="text-base md:text-lg text-center text-gray-300"
+            speed={30}
+          />
         </motion.div>
 
-        {/* Stats grid */}
+        {/* Stats */}
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ delay: 0.7 }}
-          className="grid md:grid-cols-3 gap-4"
+          transition={{ delay: 0.8 }}
+          className="grid md:grid-cols-3 gap-6"
         >
-          <Card className="glass-panel p-6 text-center space-y-2 border-neon-cyan/30">
-            <Zap className="w-8 h-8 text-neon-cyan mx-auto" />
+          <Card className="bg-black/40 border border-neon-cyan/40 backdrop-blur-lg text-center p-6 rounded-2xl shadow-lg">
+            <Zap className="w-8 h-8 text-neon-cyan mx-auto mb-1" />
             <div className="text-4xl font-bold text-neon-cyan">{gameState.cyberIQ}</div>
-            <div className="text-sm text-muted-foreground">Cyber IQ</div>
+            <div className="text-sm text-gray-400">Cyber IQ</div>
           </Card>
-
-          <Card className="glass-panel p-6 text-center space-y-2 border-neon-magenta/30">
-            <Shield className="w-8 h-8 text-neon-magenta mx-auto" />
+          <Card className="bg-black/40 border border-neon-magenta/40 backdrop-blur-lg text-center p-6 rounded-2xl shadow-lg">
+            <Shield className="w-8 h-8 text-neon-magenta mx-auto mb-1" />
             <div className="text-4xl font-bold text-neon-magenta">{gameState.completedLevels.length}/4</div>
-            <div className="text-sm text-muted-foreground">Tầng Hoàn Thành</div>
+            <div className="text-sm text-gray-400">Tầng Hoàn Thành</div>
           </Card>
-
-          <Card className="glass-panel p-6 text-center space-y-2 border-neon-green/30">
-            <Trophy className="w-8 h-8 text-neon-green mx-auto" />
+          <Card className="bg-black/40 border border-neon-green/40 backdrop-blur-lg text-center p-6 rounded-2xl shadow-lg">
+            <Trophy className="w-8 h-8 text-neon-green mx-auto mb-1" />
             <div className="text-4xl font-bold text-neon-green">{gameState.lives}</div>
-            <div className="text-sm text-muted-foreground">Mạng Còn Lại</div>
+            <div className="text-sm text-gray-400">Mạng Còn Lại</div>
           </Card>
         </motion.div>
 
-        {/* Rank display */}
+        {/* Rank */}
         <motion.div
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
-          transition={{ delay: 0.9 }}
-          className="glass-panel rounded-lg p-8 border-2 border-neon-cyan/30 bg-gradient-to-r from-neon-cyan/10 to-neon-magenta/10"
+          transition={{ delay: 1 }}
+          className="bg-gradient-to-r from-neon-cyan/10 via-black/40 to-neon-magenta/10 border border-white/10 rounded-2xl p-8 shadow-2xl"
         >
           <div className="flex items-center gap-6">
             <Star
-              className={`w-16 h-16 ${rank.color} flex-shrink-0 animate-spin`}
-              style={{ animationDuration: "3s" }}
+              className={`w-16 h-16 ${rank.color} drop-shadow-[0_0_20px_currentColor] animate-spin-slow`}
             />
-            <div className="flex-1">
-              <h3 className={`text-3xl font-bold ${rank.color} mb-2`}>{rank.title}</h3>
-              <p className="text-base text-muted-foreground">
-                Bạn đã hoàn thành tất cả 4 tầng với {gameState.cyberIQ} Cyber IQ. Bạn là một chiến binh bảo vệ mạng thực
-                thụ!
+            <div>
+              <h3 className={`text-3xl font-extrabold ${rank.color}`}>{rank.title}</h3>
+              <p className="text-gray-300 mt-2">
+                Bạn đã hoàn thành tất cả 4 tầng với {gameState.cyberIQ} Cyber IQ.  
+                Bạn là một chiến binh bảo vệ mạng thực thụ!
               </p>
             </div>
           </div>
         </motion.div>
 
-        {/* Key lessons */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 1.1 }}
-          className="glass-panel rounded-lg p-6 space-y-4"
-        >
-          <h3 className="text-lg font-bold text-neon-magenta text-center">Bài Học Quan Trọng</h3>
-          <ul className="space-y-2 text-sm text-muted-foreground">
-            <li className="flex gap-2">
-              <span className="text-neon-cyan">✓</span>
-              <span>Luôn kiểm tra kỹ email và link trước khi click (Phishing)</span>
-            </li>
-            <li className="flex gap-2">
-              <span className="text-neon-cyan">✓</span>
-              <span>Không bao giờ chia sẻ mã OTP với bất kỳ ai (OTP Scam)</span>
-            </li>
-            <li className="flex gap-2">
-              <span className="text-neon-cyan">✓</span>
-              <span>Cảnh giác với các cơ hội đầu tư hứa hẹn lợi nhuận cao bất thường (Investment Fraud)</span>
-            </li>
-            <li className="flex gap-2">
-              <span className="text-neon-cyan">✓</span>
-              <span>Xác minh qua nhiều kênh khi nhận video/audio đáng ngờ (Deepfake & AI)</span>
-            </li>
-          </ul>
-        </motion.div>
-
         {/* Actions */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 1.3 }}
-          className="flex flex-col sm:flex-row gap-4 justify-center"
+          transition={{ delay: 1.2 }}
+          className="flex flex-col sm:flex-row justify-center gap-5"
         >
           <Button
             onClick={() => setShowKnowledgeBook(true)}
-            className="bg-gradient-to-r from-neon-magenta to-neon-cyan hover:from-neon-magenta/80 hover:to-neon-cyan/80 text-background font-bold px-8 py-6 text-lg gap-2"
+            className="bg-gradient-to-r from-neon-magenta to-neon-cyan hover:brightness-125 text-black font-bold text-lg px-8 py-6 rounded-xl shadow-[0_0_25px_#00ffffaa] transition-all"
           >
-            <BookOpen className="w-5 h-5" />
+            <BookOpen className="w-5 h-5 mr-2" />
             XEM SÁCH KIẾN THỨC
           </Button>
           <Button
             onClick={onRestart}
-            className="bg-primary hover:bg-primary/80 text-primary-foreground font-bold px-8 py-6 text-lg"
+            className="bg-neon-green hover:bg-neon-green/80 text-black font-bold text-lg px-8 py-6 rounded-xl shadow-[0_0_20px_#00ff77aa]"
           >
             CHƠI LẠI
           </Button>
