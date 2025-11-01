@@ -181,12 +181,14 @@ export default function ChatQuizPopup({ question, onAnswer, avatarUrl }: ChatQui
                   <Button
                     key={index}
                     onClick={() => handleAnswerClick(index)}
-                    className="w-full text-left justify-start h-auto py-2 px-3 sm:py-3 sm:px-4 bg-primary/10 hover:bg-primary/20 border border-primary/30 hover:border-primary/50 transition-all"
+                    className="w-full h-auto py-3 px-3 sm:py-4 sm:px-4 bg-primary/10 hover:bg-primary/20 border border-primary/30 hover:border-primary/50 transition-all text-left rounded-xl flex items-start gap-2 sm:gap-3 whitespace-normal"
                   >
-                    <span className="font-bold text-neon-cyan mr-2 text-xs sm:text-sm flex-shrink-0">
+                    <span className="font-bold text-neon-cyan text-xs sm:text-sm flex-shrink-0 mt-0.5">
                       {String.fromCharCode(65 + index)}.
                     </span>
-                    <span className="text-foreground/90 text-xs sm:text-sm break-words">{answer}</span>
+                    <span className="text-foreground/90 text-xs sm:text-sm leading-relaxed text-wrap">
+                      {answer}
+                    </span>
                   </Button>
                 ))}
               </motion.div>
