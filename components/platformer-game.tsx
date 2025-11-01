@@ -903,23 +903,11 @@ export default function PlatformerGame({
           let icon = "🛸"
           if (enemy.type === "drone") icon = "🛸"
           else if (enemy.type === "quiet_drone") icon = "🛸"
-          else if (enemy.type === "firewall") icon = "🛡️"
-          else if (enemy.type === "splitter") icon = "👥"
-          else if (enemy.type === "shooter") icon = "🔫"
-          else if (enemy.type === "rope-crawler") icon = "🕷️"
 
           ctx.fillText(icon, enemy.x + enemy.width / 2, enemy.y + enemy.height / 2 + 9 + bounce)
         }
 
-        if (enemy.type === "rope-crawler" && enemy.ropeX && enemy.ropeLength) {
-          ctx.strokeStyle = "rgba(200, 200, 200, 0.6)"
-          ctx.lineWidth = 2
-          ctx.beginPath()
-          ctx.moveTo(enemy.ropeX, 0)
-          ctx.lineTo(enemy.x + enemy.width / 2, enemy.y)
-          ctx.stroke()
-        }
-      })
+              })
 
       particlesRef.current.forEach((p) => {
         const alpha = p.life / p.maxLife
