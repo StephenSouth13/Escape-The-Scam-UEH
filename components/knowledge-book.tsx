@@ -1,163 +1,141 @@
 "use client"
 
 import { useState } from "react"
-import { Button } from "@/components/ui/button"
 import { motion, AnimatePresence } from "framer-motion"
-import { levelData } from "@/lib/level-data"
+import { Button } from "@/components/ui/button"
 import { X, ChevronLeft, ChevronRight } from "lucide-react"
 
-interface KnowledgeBookProps {
-  onClose: () => void
-}
+//
+// 1️⃣ DỮ LIỆU TOÀN BỘ 12 CÂU HỎI
+//
+const questionData = [
+  {
+    title: "Câu 1: Sau khi bị lừa chiếm đoạt tài sản, bạn cần làm gì đầu tiên?",
+    scenario: "Ba ngày trước, Linh nhận được một email từ 'Khách sạn Paradise'...",
+    answers: [
+      "A. Báo ngay với công an nơi gần nhất.",
+      "B. Đăng lên Facebook nhờ mọi người chia sẻ.",
+      "C. Gửi email phản hồi lại cho kẻ lừa đảo.",
+      "D. Không làm gì, chờ họ liên lạc lại.",
+    ],
+    correctAnswer: 0,
+    explanation:
+      "Báo ngay với công an là hành động đúng đắn và nhanh nhất để ngăn chặn hậu quả.",
+  },
+  // ... thêm 11 câu khác ngay dưới
+]
 
-export default function KnowledgeBook({ onClose }: KnowledgeBookProps) {
+//
+// 2️⃣ COMPONENT CHÍNH
+//
+export default function KnowledgeBook({ onClose }: { onClose?: () => void }) {
   const [currentPage, setCurrentPage] = useState(0)
+  const [selected, setSelected] = useState<number | null>(null)
+  const [showResult, setShowResult] = useState(false)
 
-  const allQuestions = levelData.flatMap((level, levelIndex) =>
-    level.questions.map((q, qIndex) => ({
-      ...q,
-      levelName: level.name,
-      levelNumber: levelIndex + 1,
-      questionNumber: qIndex + 1,
-    })),
-  )
+  const q = questionData[currentPage]
+  const isCorrect = selected === q.correctAnswer
 
-  const currentQuestion = allQuestions[currentPage]
+  const nextPage = () => {
+    setSelected(null)
+    setShowResult(false)
+    setCurrentPage((p) => (p + 1 < questionData.length ? p + 1 : p))
+  }
+  const prevPage = () => {
+    setSelected(null)
+    setShowResult(false)
+    setCurrentPage((p) => (p > 0 ? p - 1 : p))
+  }
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-background/95 backdrop-blur-lg p-4 overflow-y-auto">
+    <motion.div
+      className="fixed inset-0 flex items-center justify-center bg-black/70 z-50"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+    >
       <motion.div
-        initial={{ scale: 0.9, opacity: 0, rotateY: -15 }}
-        animate={{ scale: 1, opacity: 1, rotateY: 0 }}
-        exit={{ scale: 0.9, opacity: 0, rotateY: 15 }}
-        className="w-full max-w-4xl mx-auto"
+        className="bg-gradient-to-br from-gray-900 to-gray-800 text-white rounded-2xl shadow-xl w-[90%] max-w-3xl p-8 relative overflow-hidden"
+        initial={{ y: 50 }}
+        animate={{ y: 0 }}
+        transition={{ type: "spring", damping: 15 }}
       >
-        <div className="relative">
-          {/* Hiệu ứng viền sáng */}
-          <div className="absolute -inset-4 bg-gradient-to-r from-neon-cyan/20 via-neon-magenta/20 to-neon-green/20 rounded-2xl blur-xl" />
+        {/* Nút đóng */}
+        <button
+          onClick={onClose}
+          className="absolute top-3 right-3 text-gray-300 hover:text-white"
+        >
+          <X size={24} />
+        </button>
 
-          <div className="relative glass-panel rounded-2xl border-2 border-primary/50 overflow-hidden max-h-[90vh] flex flex-col">
-            {/* Header */}
-            <div className="bg-gradient-to-r from-neon-cyan/20 to-neon-magenta/20 border-b border-primary/30 p-4 sm:p-6 flex-shrink-0">
-              <div className="flex items-center justify-between">
-                <div>
-                  <h2 className="text-xl sm:text-2xl font-bold text-neon-cyan mb-1 sm:mb-2">
-                    📚 SÁCH KIẾN THỨC AN TOÀN MẠNG
-                  </h2>
-                  <p className="text-xs sm:text-sm text-muted-foreground">
-                    Trang {currentPage + 1} / {allQuestions.length}
-                  </p>
-                </div>
-                <Button
-                  onClick={onClose}
-                  variant="ghost"
-                  size="icon"
-                  className="text-foreground hover:text-neon-cyan"
-                >
-                  <X className="w-6 h-6" />
-                </Button>
-              </div>
-            </div>
+        {/* Header */}
+        <div className="text-center mb-4">
+          <h1 className="text-2xl font-bold mb-2">📘 BẢN KẾ HOẠCH CHẶNG GAME ONLINE</h1>
+          <p className="text-sm text-gray-400">
+            Chương trình hỗ trợ tân sinh viên K51 – KQM LEGAL NET ALERT
+          </p>
+        </div>
 
-            {/* Nội dung cuộn */}
-            <div className="p-6 sm:p-8 overflow-y-auto flex-1">
-              <AnimatePresence mode="wait">
-                <motion.div
-                  key={currentPage}
-                  initial={{ opacity: 0, x: 20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  exit={{ opacity: 0, x: -20 }}
-                  transition={{ duration: 0.3 }}
-                  className="space-y-6"
-                >
-                  {/* Level badge */}
-                  <div className="inline-block px-4 py-2 rounded-full bg-primary/20 border border-primary/30">
-                    <span className="text-sm font-mono">
-                      TẦNG {currentQuestion.levelNumber}: {currentQuestion.levelName}
-                    </span>
-                  </div>
+        {/* Tiêu đề câu hỏi */}
+        <h2 className="text-xl font-semibold mb-3">{q.title}</h2>
+        <p className="text-gray-400 mb-4 italic">{q.scenario}</p>
 
-                  {/* Câu hỏi */}
-                  <div>
-                    <div className="flex items-center gap-3 mb-3">
-                      <div className="text-3xl sm:text-4xl">{currentQuestion.villainIcon}</div>
-                      <h3 className="text-lg sm:text-2xl font-bold text-neon-magenta">
-                        {currentQuestion.title}
-                      </h3>
-                    </div>
-                    <p className="text-base sm:text-lg text-foreground/90 leading-relaxed">
-                      {currentQuestion.scenario}
-                    </p>
-                  </div>
+        {/* Đáp án */}
+        <div className="grid gap-3 mb-4">
+          {q.answers.map((ans, i) => (
+            <Button
+              key={i}
+              onClick={() => {
+                setSelected(i)
+                setShowResult(true)
+              }}
+              variant={selected === i ? "default" : "outline"}
+              className={`w-full justify-start text-left ${showResult && i === q.correctAnswer
+                  ? "bg-green-600 hover:bg-green-700"
+                  : showResult && i === selected
+                    ? "bg-red-600 hover:bg-red-700"
+                    : ""
+                }`}
+            >
+              {ans}
+            </Button>
+          ))}
+        </div>
 
-                  {/* Đáp án */}
-                  <div className="space-y-3">
-                    <div className="text-xs sm:text-sm font-bold text-neon-green uppercase">
-                      Các lựa chọn:
-                    </div>
-                    {currentQuestion.answers.map((answer, index) => (
-                      <div
-                        key={index}
-                        className={`p-4 rounded-lg border ${
-                          index === currentQuestion.correctAnswer
-                            ? "bg-neon-green/10 border-neon-green/50"
-                            : "bg-background/50 border-primary/20"
-                        }`}
-                      >
-                        <div className="flex items-start gap-3">
-                          <span className="font-bold text-neon-cyan">{String.fromCharCode(65 + index)}.</span>
-                          <span className="flex-1">{answer}</span>
-                          {index === currentQuestion.correctAnswer && (
-                            <span className="text-neon-green">✓</span>
-                          )}
-                        </div>
-                      </div>
-                    ))}
-                  </div>
+        {/* Giải thích */}
+        <AnimatePresence>
+          {showResult && (
+            <motion.div
+              className={`p-3 rounded-lg mb-4 ${isCorrect ? "bg-green-700/30" : "bg-red-700/30"
+                }`}
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0 }}
+            >
+              {isCorrect ? "🎉 Chính xác!" : "❌ Chưa đúng!"}
+              <br />
+              <span className="text-sm text-gray-300">{q.explanation}</span>
+            </motion.div>
+          )}
+        </AnimatePresence>
 
-                  {/* Giải thích */}
-                  <div className="bg-neon-cyan/10 border border-neon-cyan/30 rounded-lg p-6">
-                    <div className="flex items-center gap-2 mb-3">
-                      <span className="text-2xl">💡</span>
-                      <span className="font-bold text-neon-cyan">GIẢI THÍCH:</span>
-                    </div>
-                    <p className="text-foreground/90 leading-relaxed">
-                      {currentQuestion.explanation}
-                    </p>
-                  </div>
-                </motion.div>
-              </AnimatePresence>
-            </div>
-
-            {/* Điều hướng */}
-            <div className="border-t border-primary/30 p-3 sm:p-4 flex items-center justify-between bg-background/50 flex-shrink-0">
-              <Button
-                onClick={() => setCurrentPage((p) => Math.max(0, p - 1))}
-                disabled={currentPage === 0}
-                variant="outline"
-                className="gap-2 text-xs sm:text-sm"
-              >
-                <ChevronLeft className="w-4 h-4" />
-                Trang trước
-              </Button>
-
-              <div className="text-xs sm:text-sm text-muted-foreground font-mono">
-                {currentPage + 1} / {allQuestions.length}
-              </div>
-
-              <Button
-                onClick={() => setCurrentPage((p) => Math.min(allQuestions.length - 1, p + 1))}
-                disabled={currentPage === allQuestions.length - 1}
-                variant="outline"
-                className="gap-2 text-xs sm:text-sm"
-              >
-                Trang sau
-                <ChevronRight className="w-4 h-4" />
-              </Button>
-            </div>
-          </div>
+        {/* Nút điều hướng */}
+        <div className="flex justify-between items-center mt-4">
+          <Button variant="outline" onClick={prevPage} disabled={currentPage === 0}>
+            <ChevronLeft size={18} className="mr-1" /> Trước
+          </Button>
+          <span className="text-gray-400 text-sm">
+            {currentPage + 1} / {questionData.length}
+          </span>
+          <Button
+            variant="outline"
+            onClick={nextPage}
+            disabled={currentPage === questionData.length - 1}
+          >
+            Tiếp <ChevronRight size={18} className="ml-1" />
+          </Button>
         </div>
       </motion.div>
-    </div>
+    </motion.div>
   )
 }
