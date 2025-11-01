@@ -35,19 +35,76 @@ export default function WinScene({ gameState, onRestart }: WinSceneProps) {
         <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/60 to-black/80 backdrop-blur-sm" />
       </div>
 
-      {/* Floating particles */}
+      {/* Fireworks effect */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        {[...Array(40)].map((_, i) => (
+        {/* Multiple fireworks bursts */}
+        {[...Array(5)].map((_, burstIdx) => (
+          <div key={`burst-${burstIdx}`}>
+            {[...Array(30)].map((_, particleIdx) => {
+              const angle = (particleIdx / 30) * Math.PI * 2
+              const velocity = 3 + Math.random() * 4
+              const distance = 150 + Math.random() * 100
+              const endX = Math.cos(angle) * distance
+              const endY = Math.sin(angle) * distance
+              const startX = window.innerWidth / 2
+              const startY = window.innerHeight / 2
+
+              return (
+                <motion.div
+                  key={`particle-${burstIdx}-${particleIdx}`}
+                  initial={{
+                    opacity: 1,
+                    x: 0,
+                    y: 0,
+                    scale: 1,
+                  }}
+                  animate={{
+                    opacity: 0,
+                    x: endX,
+                    y: endY,
+                    scale: 0,
+                  }}
+                  transition={{
+                    duration: 1.5 + Math.random() * 1,
+                    delay: burstIdx * 0.6 + 0.3,
+                    ease: "easeOut",
+                  }}
+                  className="absolute w-2 h-2 rounded-full"
+                  style={{
+                    backgroundColor: Math.random() > 0.5 ? "#00ffff" : "#ff00c8",
+                    left: `${(startX / window.innerWidth) * 100}%`,
+                    top: `${(startY / window.innerHeight) * 100}%`,
+                    boxShadow: `0 0 10px ${Math.random() > 0.5 ? "#00ffff" : "#ff00c8"}`,
+                  }}
+                />
+              )
+            })}
+          </div>
+        ))}
+
+        {/* Additional classic falling confetti particles */}
+        {[...Array(50)].map((_, i) => (
           <motion.div
-            key={i}
-            initial={{ opacity: 0, y: 0 }}
-            animate={{ opacity: [1, 0], y: -200 }}
-            transition={{ duration: 4, delay: i * 0.1, repeat: Infinity }}
-            className="absolute w-2 h-2 rounded-full"
+            key={`confetti-${i}`}
+            initial={{ opacity: 0, y: -50 }}
+            animate={{ opacity: [1, 1, 0], y: window.innerHeight + 50, rotate: 360 }}
+            transition={{
+              duration: 3 + Math.random() * 2,
+              delay: i * 0.05,
+              repeat: Infinity,
+            }}
+            className="absolute w-1.5 h-1.5 rounded-full"
             style={{
-              backgroundColor: Math.random() > 0.5 ? "#00ffff" : "#ff00c8",
+              backgroundColor: [
+                "#00ffff",
+                "#ff00c8",
+                "#00ff77",
+                "#ffff00",
+                "#ff6600",
+              ][Math.floor(Math.random() * 5)],
               left: `${Math.random() * 100}%`,
-              bottom: 0,
+              top: -50,
+              filter: `drop-shadow(0 0 4px currentColor)`,
             }}
           />
         ))}
