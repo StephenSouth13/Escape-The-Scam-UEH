@@ -196,23 +196,23 @@ export default function ChatQuizPopup({ question, onAnswer, avatarUrl }: ChatQui
 
             {/* Explanation */}
             {showExplanation && selectedAnswer !== null && (
-              <motion.div initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} className="pt-3 sm:pt-4">
+              <motion.div initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} className="pt-2 xs:pt-3 sm:pt-4">
                 <div
-                  className={`rounded-2xl p-3 sm:p-4 border-2 ${
+                  className={`rounded-lg xs:rounded-xl sm:rounded-2xl p-2.5 xs:p-3 sm:p-4 border-2 ${
                     selectedAnswer === question.correctAnswer
                       ? "bg-neon-green/20 border-neon-green/50"
                       : "bg-danger-red/20 border-danger-red/50"
                   }`}
                 >
-                  <div className="flex items-center gap-2 mb-2 sm:mb-3">
-                    <div className="text-2xl sm:text-3xl flex-shrink-0">
+                  <div className="flex items-center gap-1.5 xs:gap-2 mb-1.5 xs:mb-2 sm:mb-3">
+                    <div className="text-xl xs:text-2xl sm:text-3xl flex-shrink-0">
                       {selectedAnswer === question.correctAnswer ? "✅" : "❌"}
                     </div>
-                    <div className="font-bold text-base sm:text-lg">
+                    <div className="font-bold text-sm xs:text-base sm:text-lg">
                       {selectedAnswer === question.correctAnswer ? "Chính xác!" : "Sai rồi!"}
                     </div>
                   </div>
-                  <div className="text-xs sm:text-sm text-foreground/90 leading-relaxed">
+                  <div className="text-[10px] xs:text-xs sm:text-sm text-foreground/90 leading-relaxed">
                     {question.explanation}
                   </div>
                 </div>
