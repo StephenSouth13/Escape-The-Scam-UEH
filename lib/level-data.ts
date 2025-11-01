@@ -23,7 +23,7 @@ export interface Chest {
   y: number
   width: number
   height: number
-  type: "life" | "data" | "power" | "virus"
+  type: "life" | "data" | "power"
   collected: boolean
 }
 
