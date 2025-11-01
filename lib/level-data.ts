@@ -127,7 +127,7 @@ export const levelData: LevelData[] = [
         ],
         correctAnswer: 1,
         explanation:
-          "Trang web có tên miền 'shopeepv.com' không thuộc Shopee chính th��c. Đây là dạng link giả mạo để đánh cắp thông tin cá nhân.",
+          "Trang web có tên miền 'shopeepv.com' không thuộc Shopee chính thức. Đây là dạng link giả mạo để đánh cắp thông tin cá nhân.",
         villainIcon: "📱",
       },
     ],
