@@ -127,7 +127,7 @@ export const levelData: LevelData[] = [
         answers: [
           "A. Nhập ngay OTP để tránh bị khóa tài khoản",
           "B. Gọi tổng đài ngân hàng hoặc mở ứng dụng chính thức để kiểm tra",
-          "C. Chụp màn hình g��i bạn bè xem giúp",
+          "C. Chụp màn hình gửi bạn bè xem giúp",
           "D. Trả lời lại email để hỏi thêm thông tin",
         ],
         correctAnswer: 1,
@@ -170,7 +170,7 @@ export const levelData: LevelData[] = [
       {
         title: "Câu 4: Dự án đầu tư ảo",
         scenario:
-          'Một dự án gửi bạn "Hợp đồng đầu tư online" hứa lợi nhuận 60%/tháng, yêu cầu chuyển tiền trong 1 giờ. Dấu hiệu nào cho thấy đây là lừa đảo?',
+          'Một dự ��n gửi bạn "Hợp đồng đầu tư online" hứa lợi nhuận 60%/tháng, yêu cầu chuyển tiền trong 1 giờ. Dấu hiệu nào cho thấy đây là lừa đảo?',
         answers: [
           "A. Có giấy mời đầu tư và chữ ký điện tử",
           "B. Cam kết lãi suất quá cao, yêu cầu nộp tiền gấp",
@@ -193,7 +193,7 @@ export const levelData: LevelData[] = [
         ],
         correctAnswer: 1,
         explanation:
-          "Cơ quan công an không bao giờ yêu cầu chuyển tiền qua điện thoại. Cần xác minh thông tin chính thức.",
+          "Cơ quan công an không bao giờ yêu c���u chuyển tiền qua điện thoại. Cần xác minh thông tin chính thức.",
         villainIcon: "📷",
       },
       {
@@ -302,17 +302,8 @@ export const levelData: LevelData[] = [
     ],
     patrolEnemies: [
       { x: 50, y: 510, type: "drone", patrolStart: 50, patrolEnd: 200, patrolSpeed: 1.4 },
-      {
-        x: 250,
-        y: 410,
-        type: "rope-crawler",
-        patrolStart: 200,
-        patrolEnd: 400,
-        patrolSpeed: 1.2,
-        ropeX: 300,
-        ropeLength: 200,
-      },
-      { x: 500, y: 310, type: "firewall", patrolStart: 450, patrolEnd: 650, patrolSpeed: 1.0 },
+      { x: 250, y: 410, type: "drone", patrolStart: 200, patrolEnd: 400, patrolSpeed: 1.2 },
+      { x: 500, y: 310, type: "drone", patrolStart: 450, patrolEnd: 650, patrolSpeed: 1.0 },
     ],
     portal: { x: 1000, y: 310, width: 80, height: 80 },
     decorations: [],
@@ -340,7 +331,7 @@ export const levelData: LevelData[] = [
         title: "Câu 11: Cuộc gọi video bắt cóc",
         scenario: "Bạn nhận cuộc gọi video, thấy hình ảnh người thân bị trói và kêu cứu. Bạn nên làm gì đầu tiên?",
         answers: [
-          "A. Chuyển tiền ngay để đảm bảo an toàn",
+          "A. Chuy���n tiền ngay để đảm bảo an toàn",
           "B. Giữ bình tĩnh, gọi ngay cho người thân bằng số khác để kiểm tra",
           "C. Gọi lại cho số đó để hỏi rõ địa điểm",
           "D. Chia sẻ đoạn video lên mạng",
