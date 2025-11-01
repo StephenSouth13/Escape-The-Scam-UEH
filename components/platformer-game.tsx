@@ -216,7 +216,7 @@ export default function PlatformerGame({
       })
     }
 
-    patrolEnemiesRef.current = [...newPatrolEnemies, ...extras]
+    patrolEnemiesRef.current = newPatrolEnemies
 
     chestsRef.current = currentLevelData.current.chests.map((c) => ({ ...c }))
     decorationsRef.current = []
