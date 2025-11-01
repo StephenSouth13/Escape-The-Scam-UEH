@@ -88,7 +88,7 @@ export const levelData: LevelData[] = [
       {
         title: "CÂU HỎI 1: Công ty Luật giả mạo",
         scenario:
-          "Sau khi bị lừa chiếm đoạt tài sản, bạn thấy quảng cáo 'đòi lại tiền bị lừa đảo' từ một công ty Luật với thông tin 'Hỗ trợ lấy lại tiền bị lừa đảo. Đã ��ược ủy quyền bởi Viện Kiểm Sát'. Hãy quyết định xem đây là lừa hay thật dựa trên 4 đáp án sau:",
+          "Sau khi bị lừa chiếm đoạt tài sản, bạn thấy quảng cáo 'đòi lại tiền bị lừa đảo' từ một công ty Luật với thông tin 'Hỗ trợ lấy lại tiền bị lừa đảo. Đã được ủy quyền bởi Viện Kiểm Sát'. Hãy quyết định xem đây là lừa hay thật dựa trên 4 đáp án sau:",
         answers: [
           "A. Là thật, công ty Luật thì sẽ uy tín.",
           "B. Là lừa đảo, tiền đã mất không thể lấy lại",
@@ -118,7 +118,7 @@ export const levelData: LevelData[] = [
       {
         title: "CÂU HỎI 3: Tin nhắn trúng thưởng Shopee",
         scenario:
-          "Bạn nhận được tin nhắn 'Chúc mừng bạn trúng thưởng iPhone 15 từ Shopee. Hãy truy cập shopeepv.com để xác nhận và nhận quà trong 5 phút!'. Hãy xác định đây là tình huống th��t hay lừa đảo dựa trên 4 đáp án sau:",
+          "Bạn nhận được tin nhắn 'Chúc mừng bạn trúng thưởng iPhone 15 từ Shopee. Hãy truy cập shopeepv.com để xác nhận và nhận quà trong 5 phút!'. Hãy xác định đây là tình huống thật hay lừa đảo dựa trên 4 đáp án sau:",
         answers: [
           "A. Là thật, Shopee thường có khuyến mãi bất ngờ.",
           "B. Là lừa đảo, tên miền có ký tự lạ và không chính thống.",
@@ -127,7 +127,7 @@ export const levelData: LevelData[] = [
         ],
         correctAnswer: 1,
         explanation:
-          "Trang web có tên miền 'shopeepv.com' không thuộc Shopee chính th��c. Đây là dạng link giả mạo để đánh cắp thông tin cá nhân.",
+          "Trang web có tên miền 'shopeepv.com' không thuộc Shopee chính thức. Đây là dạng link giả mạo để đánh cắp thông tin cá nhân.",
         villainIcon: "📱",
       },
     ],
@@ -184,7 +184,7 @@ export const levelData: LevelData[] = [
         ],
         correctAnswer: 2,
         explanation:
-          "Người hành nghề luật hợp pháp phải có giấy phép rõ ràng, không yêu cầu chuyển tiền qua điện thoại. Cần xác minh thông tin qua kênh chính thức để tránh bị lợi dụng. Bạn có thể tra cứu danh sách luật sư, tổ chức hành nghề luật sư được cấp phép trên Cổng thông tin điện tử của Bộ Tư pháp hoặc ��oàn luật sư các tỉnh/thành phố để xác minh.",
+          "Người hành nghề luật hợp pháp phải có giấy phép rõ ràng, không yêu cầu chuyển tiền qua điện thoại. Cần xác minh thông tin qua kênh chính thức để tránh bị lợi dụng. Bạn có thể tra cứu danh sách luật sư, tổ chức hành nghề luật sư được cấp phép trên Cổng thông tin điện tử của Bộ Tư pháp hoặc đoàn luật sư các tỉnh/thành phố để xác minh.",
         villainIcon: "☎️",
       },
       {
@@ -262,7 +262,7 @@ export const levelData: LevelData[] = [
       {
         title: "CÂU HỎI 9: Cuộc gọi video deepfake - Bắt cóc",
         scenario:
-          "Bạn nhận được cuộc gọi video thấy 'em trai' đang khóc, nói bị bắt giữ và yêu cầu chuyển 10 tri���u gấp để 'chuộc'. Người gọi thúc giục, nhìn rất giống em trai nhưng giọng hơi khác. Bạn làm gì?",
+          "Bạn nhận được cuộc gọi video thấy 'em trai' đang khóc, nói bị bắt giữ và yêu cầu chuyển 10 triệu gấp để 'chuộc'. Người gọi thúc giục, nhìn rất giống em trai nhưng giọng hơi khác. Bạn làm gì?",
         answers: [
           "A. Chuyển tiền ngay để cứu người thân.",
           "B. Gọi lại số khác để thương lượng với kẻ bắt cóc.",
@@ -323,7 +323,7 @@ export const levelData: LevelData[] = [
         answers: [
           "A. Chuyển tiền ngay để không bị hủy đơn",
           "B. Hỏi lại mã đơn hàng và xác nhận trên ứng dụng mua sắm chính thức",
-          "C. Cung cấp địa chỉ và số điện thoại đ�� họ giao nhanh hơn",
+          "C. Cung cấp địa chỉ và số điện thoại để họ giao nhanh hơn",
           "D. Tin tưởng vì shipper nói chuyện lịch sự và có mã đơn hàng",
         ],
         correctAnswer: 1,
