@@ -55,20 +55,20 @@ interface Enemy {
 }
 
 interface PatrolEnemy {
-  id: string
-  x: number
-  y: number
-  width: number
-  height: number
-  type: "drone" | "virus" | "firewall" | "splitter" | "shooter" | "rope-crawler"
-  patrolStart: number
-  patrolEnd: number
-  patrolSpeed: number
-  patrolDirection: number
-  animationOffset: number
-  ropeX?: number
-  ropeLength?: number
-}
+    id: string
+    x: number
+    y: number
+    width: number
+    height: number
+    type: "drone" | "quiet_drone" | "firewall" | "splitter" | "shooter" | "rope-crawler"
+    patrolStart: number
+    patrolEnd: number
+    patrolSpeed: number
+    patrolDirection: number
+    animationOffset: number
+    ropeX?: number
+    ropeLength?: number
+  }
 
 export default function PlatformerGame({
   gameState,
@@ -169,7 +169,7 @@ export default function PlatformerGame({
       y: e.y,
       width: 50,
       height: 50,
-      type: "laptop",
+      type: e.type,
       defeated: false,
       questionId: e.questionId,
       animationOffset: Math.random() * Math.PI * 2,
@@ -177,16 +177,16 @@ export default function PlatformerGame({
     enemiesRef.current = newEnemies
 
     const newPatrolEnemies: PatrolEnemy[] =
-      currentLevelData.current.patrolEnemies?.filter((e) => e.type === "drone" || e.type === "virus").map((e, i) => ({
+      currentLevelData.current.patrolEnemies?.filter((e) => e.type === "drone" || e.type === "quiet_drone").map((e, i) => ({
         id: `patrol-${i}`,
         x: e.x,
         y: e.y,
         width: 45,
         height: 45,
         type: e.type,
-        patrolStart: e.patrolStart,
-        patrolEnd: e.patrolEnd,
-        patrolSpeed: e.patrolSpeed,
+        patrolStart: typeof e.patrolStart === 'number' ? e.patrolStart : e.x,
+        patrolEnd: typeof e.patrolEnd === 'number' ? e.patrolEnd : e.x,
+        patrolSpeed: e.type === 'quiet_drone' ? 0 : e.patrolSpeed,
         patrolDirection: 1,
         animationOffset: Math.random() * Math.PI * 2,
         ropeX: e.ropeX,
@@ -564,19 +564,6 @@ export default function PlatformerGame({
             cyberIQGainedRef.current += 5
           } else if (chest.type === "power") {
             skipQuizPowerRef.current++
-          } else if (chest.type === "virus") {
-            // Stun nearby enemies for 3 seconds
-            // Apply stun to patrol enemies
-            patrolEnemies.forEach((e) => {
-              const dist = Math.sqrt((e.x - chest.x) ** 2 + (e.y - chest.y) ** 2)
-              if (dist < 200) {
-                const originalSpeed = e.patrolSpeed
-                e.patrolSpeed = 0
-                setTimeout(() => {
-                  e.patrolSpeed = originalSpeed
-                }, 3000)
-              }
-            })
           }
         }
       })
@@ -690,7 +677,7 @@ export default function PlatformerGame({
           ctx.textAlign = "center"
           ctx.fillStyle = "#ffffff"
           ctx.fillText(
-            chest.type === "life" ? "💙" : chest.type === "data" ? "💾" : chest.type === "power" ? "🧠" : "💥",
+            chest.type === "life" ? "💙" : chest.type === "data" ? "���" : chest.type === "power" ? "🧠" : "💥",
             chest.x + chest.width / 2,
             chest.y + chest.height / 2 + 7,
           )
@@ -851,7 +838,7 @@ export default function PlatformerGame({
 
           let icon = "🛸"
           if (enemy.type === "drone") icon = "🛸"
-          else if (enemy.type === "virus") icon = "🦠"
+          else if (enemy.type === "quiet_drone") icon = "🛸"
           else if (enemy.type === "firewall") icon = "🛡️"
           else if (enemy.type === "splitter") icon = "👥"
           else if (enemy.type === "shooter") icon = "🔫"
