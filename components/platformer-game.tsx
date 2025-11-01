@@ -598,25 +598,15 @@ export default function PlatformerGame({
         }
       })
 
-      const portal = currentLevelData.current.portal
       const allEnemiesDefeated = enemies.every((e) => e.defeated)
 
-      if (allEnemiesDefeated) {
-        const portalCollision =
-          playerRef.current.x < portal.x + portal.width &&
-          playerRef.current.x + playerRef.current.width > portal.x &&
-          playerRef.current.y < portal.y + portal.height &&
-          playerRef.current.y + playerRef.current.height > portal.y
-
-        if (portalCollision && !levelComplete) {
-          console.log("[v0] Portal collision detected! Player at:", playerRef.current.x, playerRef.current.y)
-          console.log("[v0] Portal at:", portal.x, portal.y, "Size:", portal.width, portal.height)
-          setLevelComplete(true)
-          SoundManager.playSuccess()
-          setTimeout(() => {
-            onLevelComplete()
-          }, 1500)
-        }
+      if (allEnemiesDefeated && !levelComplete) {
+        console.log("[v0] All enemies defeated! Level complete!")
+        setLevelComplete(true)
+        SoundManager.playSuccess()
+        setTimeout(() => {
+          onLevelComplete()
+        }, 1500)
       }
 
       ctx.clearRect(0, 0, canvas.width, canvas.height)
