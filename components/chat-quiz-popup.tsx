@@ -18,7 +18,7 @@ interface Message {
   icon: string
 }
 
-export default function ChatQuizPopup({ question, onAnswer }: ChatQuizPopupProps) {
+export default function ChatQuizPopup({ question, onAnswer, avatarUrl }: ChatQuizPopupProps) {
   const [messages, setMessages] = useState<Message[]>([])
   const [showAnswers, setShowAnswers] = useState(false)
   const [selectedAnswer, setSelectedAnswer] = useState<number | null>(null)
