@@ -116,9 +116,9 @@ export default function ChatQuizPopup({ question, onAnswer, avatarUrl }: ChatQui
                   <div>{question.villainIcon}</div>
                 )}
               </div>
-              <div className="min-w-0">
-                <div className="font-bold text-sm sm:text-base text-foreground truncate">Kẻ Lừa Đảo</div>
-                <div className="text-xs text-neon-green">● Đang hoạt động</div>
+              <div className="min-w-0 flex-1">
+                <div className="font-bold text-xs xs:text-sm sm:text-base text-foreground truncate">Kẻ Lừa Đảo</div>
+                <div className="text-xs text-neon-green">● Hoạt động</div>
               </div>
             </div>
           </div>
