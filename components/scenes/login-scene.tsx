@@ -242,7 +242,7 @@ export default function LoginScene({ onStart }: LoginSceneProps) {
             {/* Bottom info */}
             <div className="mt-3 sm:mt-6 text-center text-[10px] sm:text-xs text-muted-foreground font-mono space-y-0.5 sm:space-y-1">
               <p>🛡️ Một trò chơi giáo dục về an toàn mạng</p>
-              <p className="text-neon-cyan">Học cách nhận diện và tránh các chiêu lừa đảo trực tuyến</p>
+              <p className="text-neon-cyan">Nội dung đã được Công ty Cổ phần truyền thông Luật Việt Nam Bảo trợ Chuyên môn</p>
             </div>
           </motion.div>
         )}
