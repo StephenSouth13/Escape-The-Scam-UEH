@@ -949,49 +949,52 @@ export default function PlatformerGame({
         />
       </div>
 
-      <div className="absolute top-2 left-2 right-2 sm:top-4 sm:left-4 sm:right-4 flex justify-between items-start z-20 gap-2 sm:gap-4">
-        <div className="glass-panel rounded px-2 sm:px-4 py-1.5 sm:py-2 space-y-1 text-[10px] sm:text-xs font-mono">
-          <div>
-            {gameState.playerName.toUpperCase()}: <span className="text-neon-cyan">{gameState.mssv}</span>
+      <div className="absolute top-2 left-2 right-2 sm:top-3 sm:left-3 sm:right-3 lg:top-4 lg:left-4 lg:right-4 flex justify-between items-center z-20 gap-2 sm:gap-3">
+        <div className="glass-panel rounded-md backdrop-blur-md bg-background/40 border border-neon-cyan/20 px-2 sm:px-3 py-1.5 sm:py-2 space-y-0.5 sm:space-y-1 text-[10px] sm:text-xs lg:text-sm font-mono shadow-lg">
+          <div className="text-neon-cyan font-semibold">
+            {gameState.playerName.toUpperCase()}
           </div>
-          <div className="flex items-center gap-1 sm:gap-2">
-            <span>HP:</span>
+          <div className="text-foreground/80">
+            ID: <span className="text-neon-cyan font-mono">{gameState.mssv}</span>
+          </div>
+          <div className="flex items-center gap-1 sm:gap-2 pt-0.5">
+            <span className="text-foreground/70">HP:</span>
             <div className="flex gap-0.5">
               {Array.from({ length: Math.max(gameState.lives, 0) }).map((_, i) => (
-                <Heart key={i} className="w-3 sm:w-4 h-3 sm:h-4 fill-neon-magenta text-neon-magenta" />
+                <Heart key={i} className="w-3 sm:w-4 lg:w-5 h-3 sm:h-4 lg:h-5 fill-neon-magenta text-neon-magenta drop-shadow-lg" />
               ))}
             </div>
           </div>
         </div>
 
-        <div className="flex flex-col items-end gap-1 sm:gap-2">
-          <div className="glass-panel rounded px-2 sm:px-3 py-1 sm:py-1.5 text-center">
-            <p className="text-[9px] sm:text-xs lg:text-sm text-neon-green font-semibold leading-tight">
+        <div className="flex flex-col items-center gap-1 sm:gap-1.5">
+          <div className="glass-panel rounded-md backdrop-blur-md bg-background/40 border border-neon-cyan/20 px-2 sm:px-2.5 py-1 sm:py-1.5 text-center shadow-lg">
+            <p className="text-[8px] sm:text-[10px] lg:text-xs text-neon-green font-semibold leading-tight tracking-tight">
               Nội dung đã được<br/>
-              <span className="text-neon-cyan">Công ty Cổ phần<br/>truyền thông Luật<br/>Việt Nam</span><br/>
+              <span className="text-neon-cyan font-bold">Công ty Cổ phần<br/>truyền thông Luật<br/>Việt Nam</span><br/>
               Bảo trợ Chuyên môn
             </p>
           </div>
-          <div className="flex gap-1 sm:gap-2 items-center">
+          <div className="flex gap-1 items-center">
             <Button
               variant="ghost"
               size="sm"
               onClick={() => setShowTutorial(true)}
-              className="glass-panel rounded px-2 sm:px-3 py-1 text-[10px] sm:text-xs"
+              className="glass-panel rounded-md backdrop-blur-md bg-background/40 border border-neon-cyan/20 px-1.5 sm:px-2 py-0.5 text-[9px] sm:text-[11px] lg:text-xs hover:bg-neon-cyan/10 transition-all shadow-md"
             >
-              ❓ Hướng Dẫn
+              ❓
             </Button>
             <Button
               variant="ghost"
               size="icon"
               onClick={toggleMute}
-              className="glass-panel rounded w-8 sm:w-10 h-8 sm:h-10 hover:bg-neon-cyan/10 transition"
+              className="glass-panel rounded-md backdrop-blur-md bg-background/40 border border-neon-cyan/20 w-7 sm:w-8 lg:w-10 h-7 sm:h-8 lg:h-10 hover:bg-neon-cyan/10 transition-all shadow-md flex items-center justify-center"
               title={isMuted ? "Bật âm thanh" : "Tắt âm thanh"}
             >
               {isMuted ? (
-                <VolumeX className="w-4 sm:w-5 h-4 sm:h-5 text-neon-magenta" />
+                <VolumeX className="w-3.5 sm:w-4 lg:w-5 h-3.5 sm:h-4 lg:h-5 text-neon-magenta" />
               ) : (
-                <Volume2 className="w-4 sm:w-5 h-4 sm:h-5 text-neon-cyan" />
+                <Volume2 className="w-3.5 sm:w-4 lg:w-5 h-3.5 sm:h-4 lg:h-5 text-neon-cyan" />
               )}
             </Button>
           </div>
@@ -1047,7 +1050,7 @@ export default function PlatformerGame({
                   <span className="text-red-400">🔴 Ánh sáng đỏ</span> = Kẻ địch tuần tra (di chuyển, gây sát thương)
                 </p>
                 <p>
-                  <span className="text-green-400">💚 Phát sáng xanh lá</span> = Rương vật phẩm (💙 mạng, 💾 điểm, 💥 stun)
+                  <span className="text-green-400">💚 Phát sáng xanh lá</span> = Rương vật phẩm (��� mạng, 💾 điểm, 💥 stun)
                 </p>
               </div>
 
@@ -1068,7 +1071,7 @@ export default function PlatformerGame({
             </div>
 
             <Button onClick={() => setShowTutorial(false)} className="w-full">
-              Đã Hi���u - Bắt Đầu Chơi!
+              Đã Hiểu - Bắt Đầu Chơi!
             </Button>
           </div>
         </div>
