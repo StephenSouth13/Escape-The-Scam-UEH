@@ -950,7 +950,7 @@ export default function PlatformerGame({
         />
       </div>
 
-      <div className="absolute top-4 left-4 right-4 flex justify-between items-start z-20">
+      <div className="absolute top-4 left-4 right-4 flex justify-between items-start z-20 gap-4">
         <div className="flex gap-3">
           <div className="glass-panel rounded px-4 py-2 space-y-1 text-xs font-mono">
             <div>
@@ -976,28 +976,37 @@ export default function PlatformerGame({
           />
         </div>
 
-        <div className="flex gap-2 items-start">
-          <Button
-            variant="ghost"
-            size="sm"
-            onClick={() => setShowTutorial(true)}
-            className="glass-panel rounded px-3 py-1 text-xs"
-          >
-            ❓ Hướng Dẫn
-          </Button>
-          <Button
-            variant="ghost"
-            size="icon"
-            onClick={toggleMute}
-            className="glass-panel rounded w-10 h-10 hover:bg-neon-cyan/10 transition"
-            title={isMuted ? "Bật âm thanh" : "Tắt âm thanh"}
-          >
-            {isMuted ? (
-              <VolumeX className="w-5 h-5 text-neon-magenta" />
-            ) : (
-              <Volume2 className="w-5 h-5 text-neon-cyan" />
-            )}
-          </Button>
+        <div className="flex flex-col items-end gap-2">
+          <div className="glass-panel rounded px-3 py-1.5 text-center">
+            <p className="text-xs sm:text-sm text-neon-green font-semibold leading-tight">
+              Nội dung đã được<br/>
+              <span className="text-neon-cyan">Công ty Cổ phần truyền thông<br/>Luật Việt Nam</span><br/>
+              Bảo trợ Chuyên môn
+            </p>
+          </div>
+          <div className="flex gap-2 items-center">
+            <Button
+              variant="ghost"
+              size="sm"
+              onClick={() => setShowTutorial(true)}
+              className="glass-panel rounded px-3 py-1 text-xs"
+            >
+              ❓ Hướng Dẫn
+            </Button>
+            <Button
+              variant="ghost"
+              size="icon"
+              onClick={toggleMute}
+              className="glass-panel rounded w-10 h-10 hover:bg-neon-cyan/10 transition"
+              title={isMuted ? "Bật âm thanh" : "Tắt âm thanh"}
+            >
+              {isMuted ? (
+                <VolumeX className="w-5 h-5 text-neon-magenta" />
+              ) : (
+                <Volume2 className="w-5 h-5 text-neon-cyan" />
+              )}
+            </Button>
+          </div>
         </div>
       </div>
 
@@ -1026,7 +1035,7 @@ export default function PlatformerGame({
 
             <div className="space-y-3 text-sm">
               <div>
-                <h3 className="font-bold text-neon-green mb-1">🎯 Mục Tiêu:</h3>
+                <h3 className="font-bold text-neon-green mb-1">�� Mục Tiêu:</h3>
                 <p>Vượt qua 4 tầng khách sạn, trả lời câu hỏi về an toàn mạng, và giải cứu Linh!</p>
               </div>
 
