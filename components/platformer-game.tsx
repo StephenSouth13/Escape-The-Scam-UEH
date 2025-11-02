@@ -1042,15 +1042,12 @@ export default function PlatformerGame({
 
               <div>
                 <h3 className="font-bold text-neon-green mb-1">🎨 Nhận Diện Vật Thể:</h3>
+                
                 <p>
-                  <span className="text-blue-400">🔵 Ánh sáng xanh + dấu "?"</span> = Câu hỏi (đứng yên, không gây sát
-                  thương)
+                  <span className="text-red-400">🔴 Tránh né</span> = Kẻ địch tuần tra (di chuyển, gây sát thương)
                 </p>
                 <p>
-                  <span className="text-red-400">🔴 Ánh sáng đỏ</span> = Kẻ địch tuần tra (di chuyển, gây sát thương)
-                </p>
-                <p>
-                  <span className="text-green-400">💚 Phát sáng xanh lá</span> = Rương vật phẩm (��� mạng, 💾 điểm, 💥 stun)
+                  <span className="text-yellow-400"> Trả lời các câu hỏi </span> =Các câu hỏi ? để qua màn
                 </p>
               </div>
 
