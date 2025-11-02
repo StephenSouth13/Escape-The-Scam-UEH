@@ -124,7 +124,7 @@ export default function ChatQuizPopup({ question, onAnswer, avatarUrl }: ChatQui
           </div>
 
           {/* Messages */}
-          <div className="bg-background/50 p-2 xs:p-3 sm:p-4 space-y-2 sm:space-y-3 max-h-[50vh] sm:max-h-[500px] overflow-y-auto overflow-x-hidden">
+          <div className="bg-background/50 p-1.5 xs:p-2 sm:p-3 md:p-4 space-y-1.5 xs:space-y-2 sm:space-y-2.5 md:space-y-3 max-h-[50vh] sm:max-h-[500px] overflow-y-auto overflow-x-hidden">
             <AnimatePresence>
               {messages.map((msg) => (
                 <motion.div
