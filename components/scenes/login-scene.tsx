@@ -102,8 +102,8 @@ export default function LoginScene({ onStart }: LoginSceneProps) {
                   transition={{ duration: 0.8 }}
                   className="space-y-6"
                 >
-                  <p className="text-2xl font-bold text-neon-magenta">Linh, bạn của bạn, đã mất tích...</p>
-                  <p className="text-lg text-foreground/80">
+                  <p className="text-lg sm:text-xl md:text-2xl font-bold text-neon-magenta">Linh, bạn của bạn, đã mất tích...</p>
+                  <p className="text-xs sm:text-sm md:text-base text-foreground/80">
                     Cô ấy nhận được một email lạ từ "Khách sạn Cyber Paradise"
                   </p>
                 </motion.div>
