@@ -1017,11 +1017,11 @@ export default function PlatformerGame({
       )}
 
       {showTutorial && (
-        <div className="absolute inset-0 flex items-center justify-center bg-background/90 backdrop-blur-sm z-40">
-          <div className="glass-panel rounded-lg p-6 max-w-2xl max-h-[80vh] overflow-y-auto space-y-4">
-            <h2 className="text-2xl font-bold text-neon-cyan">🎮 HƯỚNG DẪN CHƠI</h2>
+        <div className="absolute inset-0 flex items-center justify-center bg-background/90 backdrop-blur-sm z-40 p-2 sm:p-4">
+          <div className="glass-panel rounded-lg p-3 sm:p-6 w-full max-w-sm sm:max-w-2xl max-h-[90vh] overflow-y-auto space-y-3 sm:space-y-4">
+            <h2 className="text-lg sm:text-2xl font-bold text-neon-cyan">🎮 HƯỚNG DẪN CHƠI</h2>
 
-            <div className="space-y-3 text-sm">
+            <div className="space-y-2 sm:space-y-3 text-[11px] sm:text-sm">
               <div>
                 <h3 className="font-bold text-neon-green mb-1">�� Mục Tiêu:</h3>
                 <p>Vượt qua 4 tầng khách sạn, trả lời câu hỏi về an to��n mạng, và giải cứu Linh!</p>
