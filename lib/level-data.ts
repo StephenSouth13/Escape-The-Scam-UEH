@@ -78,7 +78,7 @@ export const levelData: LevelData[] = [
       { x: 1000, y: 410, type: "laptop", questionId: 2 },
     ],
     patrolEnemies: [
-      { x: 200, y: 510, type: "drone", patrolStart: 100, patrolEnd: 280, patrolSpeed: 1 },
+      { x: 150, y: 490, type: "drone", patrolStart: 100, patrolEnd: 280, patrolSpeed: 1 },
       { x: 500, y: 410, type: "quiet_drone", patrolStart: 500, patrolEnd: 500, patrolSpeed: 0 },
     ],
     portal: { x: 850, y: 410, width: 80, height: 80 },
