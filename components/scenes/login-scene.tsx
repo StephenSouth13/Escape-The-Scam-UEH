@@ -102,8 +102,8 @@ export default function LoginScene({ onStart }: LoginSceneProps) {
                   transition={{ duration: 0.8 }}
                   className="space-y-6"
                 >
-                  <p className="text-2xl font-bold text-neon-magenta">Linh, bạn của bạn, đã mất tích...</p>
-                  <p className="text-lg text-foreground/80">
+                  <p className="text-lg sm:text-xl md:text-2xl font-bold text-neon-magenta">Linh, bạn của bạn, đã mất tích...</p>
+                  <p className="text-xs sm:text-sm md:text-base text-foreground/80">
                     Cô ấy nhận được một email lạ từ "Khách sạn Cyber Paradise"
                   </p>
                 </motion.div>
@@ -117,8 +117,8 @@ export default function LoginScene({ onStart }: LoginSceneProps) {
                   transition={{ duration: 0.8 }}
                   className="space-y-6"
                 >
-                  <p className="text-2xl font-bold text-neon-green">Cô ấy đang bị giam giữ...</p>
-                  <p className="text-lg text-foreground/80">Trong một khách sạn đầy bẫy lừa đảo</p>
+                  <p className="text-lg sm:text-xl md:text-2xl font-bold text-neon-green">Cô ấy đang bị giam giữ...</p>
+                  <p className="text-xs sm:text-sm md:text-base text-foreground/80">Trong một khách sạn đầy bẫy lừa đảo</p>
                 </motion.div>
               )}
 
@@ -130,8 +130,8 @@ export default function LoginScene({ onStart }: LoginSceneProps) {
                   transition={{ duration: 0.8 }}
                   className="space-y-6"
                 >
-                  <p className="text-3xl font-bold text-neon-cyan">Bạn có đủ can đảm không?</p>
-                  <p className="text-xl text-neon-magenta">Hãy vượt qua 4 tầng để giải cứu cô ấy!</p>
+                  <p className="text-lg sm:text-2xl md:text-3xl font-bold text-neon-cyan">Bạn có đủ can đảm không?</p>
+                  <p className="text-xs sm:text-base md:text-xl text-neon-magenta">Hãy vượt qua 4 tầng để giải cứu cô ấy!</p>
                 </motion.div>
               )}
             </div>
@@ -163,56 +163,56 @@ export default function LoginScene({ onStart }: LoginSceneProps) {
             </div>
 
             {/* Main content */}
-            <div className="glass-panel rounded-lg p-8 md:p-12 space-y-8">
-              <div className="text-center space-y-4">
+            <div className="glass-panel rounded-lg p-4 sm:p-8 md:p-12 space-y-4 sm:space-y-6 md:space-y-8">
+              <div className="text-center space-y-2 sm:space-y-3 md:space-y-4">
                 <motion.h1
                   initial={{ opacity: 0, y: -20 }}
                   animate={{ opacity: 1, y: 0 }}
-                  className="text-5xl md:text-7xl font-bold text-neon-cyan glitch"
+                  className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-bold text-neon-cyan glitch"
                 >
                   ESCAPE THE SCAM
                 </motion.h1>
-                <div className="h-1 w-32 mx-auto bg-gradient-to-r from-transparent via-neon-magenta to-transparent" />
+                <div className="h-0.5 sm:h-1 w-20 sm:w-32 mx-auto bg-gradient-to-r from-transparent via-neon-magenta to-transparent" />
               </div>
 
-              <div className="space-y-6 text-center">
-                <div className="text-lg md:text-xl text-foreground/90 leading-relaxed">
-                  <p className="mb-4">
+              <div className="space-y-3 sm:space-y-4 md:space-y-6 text-center">
+                <div className="text-xs sm:text-base md:text-lg lg:text-xl text-foreground/90 leading-relaxed px-2 sm:px-0">
+                  <p className="mb-2 sm:mb-3 md:mb-4">
                     Linh, bạn của bạn, đã mất tích sau khi nhận được một email lạ từ "Khách sạn Cyber Paradise"...
                   </p>
-                  <p className="mb-4">Cô ấy đang bị giam giữ ở đâu đó trong khách sạn đầy bẫy lừa đảo này.</p>
+                  <p className="mb-2 sm:mb-3 md:mb-4">Cô ấy đang bị giam giữ ở đâu đó trong khách sạn đầy bẫy lừa đảo này.</p>
                   <p className="text-neon-magenta font-bold">Bạn phải vượt qua 4 tầng nguy hiểm để giải cứu cô ấy!</p>
                 </div>
 
-                <div className="max-w-md mx-auto space-y-4 pt-4">
-                  <div className="space-y-2">
-                    <label className="text-sm text-neon-green uppercase tracking-wider">Tên sinh viên:</label>
+                <div className="w-full max-w-md mx-auto space-y-2 sm:space-y-3 md:space-y-4 pt-2 sm:pt-4 px-2 sm:px-0">
+                  <div className="space-y-1.5 sm:space-y-2">
+                    <label className="text-[11px] sm:text-xs md:text-sm text-neon-green uppercase tracking-wider">Tên sinh viên:</label>
                     <Input
                       type="text"
                       value={name}
                       onChange={(e) => setName(e.target.value)}
                       onKeyDown={(e) => e.key === "Enter" && handleStart()}
                       placeholder="Nhập tên của bạn..."
-                      className="bg-background/50 border-primary/50 text-foreground placeholder:text-muted-foreground focus:border-primary text-center text-lg"
+                      className="bg-background/50 border-primary/50 text-foreground placeholder:text-muted-foreground focus:border-primary text-center text-xs sm:text-sm md:text-base py-2"
                       autoFocus
                     />
                   </div>
 
-                  <div className="space-y-2">
-                    <label className="text-sm text-neon-cyan uppercase tracking-wider">MSSV (Mã Số Sinh Viên):</label>
+                  <div className="space-y-1.5 sm:space-y-2">
+                    <label className="text-[11px] sm:text-xs md:text-sm text-neon-cyan uppercase tracking-wider">MSSV (Mã Số Sinh Viên):</label>
                     <Input
                       type="text"
                       value={mssv}
                       onChange={(e) => setMssv(e.target.value)}
                       placeholder="VD: 20210001"
-                      className="bg-background/50 border-primary/50 text-foreground placeholder:text-muted-foreground focus:border-primary text-center text-lg"
+                      className="bg-background/50 border-primary/50 text-foreground placeholder:text-muted-foreground focus:border-primary text-center text-xs sm:text-sm md:text-base py-2"
                     />
                   </div>
 
                   <Button
                     onClick={handleStart}
                     disabled={!name.trim()}
-                    className="w-full bg-gradient-to-r from-neon-cyan to-neon-magenta hover:from-neon-cyan/80 hover:to-neon-magenta/80 text-background font-bold text-lg py-6 relative overflow-hidden group"
+                    className="w-full bg-gradient-to-r from-neon-cyan to-neon-magenta hover:from-neon-cyan/80 hover:to-neon-magenta/80 text-background font-bold text-xs sm:text-sm md:text-base py-2 sm:py-3 md:py-6 relative overflow-hidden group"
                   >
                     <span className="relative z-10">🎮 BẮT ĐẦU NHIỆM VỤ GIẢI CỨU</span>
                     <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent translate-x-[-200%] group-hover:translate-x-[200%] transition-transform duration-1000" />
@@ -224,23 +224,23 @@ export default function LoginScene({ onStart }: LoginSceneProps) {
                       setShowTutorial(true)
                     }}
                     variant="outline"
-                    className="w-full border-neon-cyan/50 text-neon-cyan hover:bg-neon-cyan/10 font-bold py-6"
+                    className="w-full border-neon-cyan/50 text-neon-cyan hover:bg-neon-cyan/10 font-bold text-xs sm:text-sm md:text-base py-2 sm:py-3 md:py-6"
                   >
-                    <HelpCircle className="w-5 h-5 mr-2" />📖 HƯỚNG DẪN CHƠI
+                    <HelpCircle className="w-4 sm:w-5 h-4 sm:h-5 mr-1 sm:mr-2" />📖 HƯỚNG DẪN CHƠI
                   </Button>
                 </div>
               </div>
 
               {/* Warning message */}
-              <div className="border border-danger-red/30 bg-danger-red/10 rounded p-4 text-center">
-                <p className="text-sm text-danger-red font-mono">
+              <div className="border border-danger-red/30 bg-danger-red/10 rounded p-2 sm:p-3 md:p-4 text-center">
+                <p className="text-[10px] sm:text-xs md:text-sm text-danger-red font-mono leading-relaxed">
                   ⚠ CẢNH BÁO: Trò chơi này chứa nội dung về lừa đảo trực tuyến. Hãy học hỏi và bảo vệ bản thân!
                 </p>
               </div>
             </div>
 
             {/* Bottom info */}
-            <div className="mt-6 text-center text-xs text-muted-foreground font-mono space-y-1">
+            <div className="mt-3 sm:mt-6 text-center text-[10px] sm:text-xs text-muted-foreground font-mono space-y-0.5 sm:space-y-1">
               <p>🛡️ Một trò chơi giáo dục về an toàn mạng</p>
               <p className="text-neon-cyan">Học cách nhận diện và tránh các chiêu lừa đảo trực tuyến</p>
             </div>
