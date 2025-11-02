@@ -8,7 +8,6 @@ import { VolumeX, Volume2, Heart } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import ChatQuizPopup from "@/components/chat-quiz-popup"
 import MobileControls from "@/components/mobile-controls"
-import MiniRadar from "@/components/mini-radar"
 
 interface PlatformerGameProps {
   gameState: GameState
