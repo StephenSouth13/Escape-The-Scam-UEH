@@ -227,14 +227,14 @@ export default function WinScene({ gameState, onRestart }: WinSceneProps) {
         >
           <Button
             onClick={() => setShowKnowledgeBook(true)}
-            className="bg-gradient-to-r from-neon-magenta to-neon-cyan hover:brightness-125 text-black font-bold text-lg px-8 py-6 rounded-xl shadow-[0_0_25px_#00ffffaa] transition-all"
+            className="bg-gradient-to-r from-neon-magenta to-neon-cyan hover:brightness-125 text-white font-bold text-lg px-8 py-6 rounded-xl shadow-[0_0_25px_#00ffffaa] transition-all"
           >
             <BookOpen className="w-5 h-5 mr-2" />
-            XEM S��CH KIẾN THỨC
+            XEM SÁCH KIẾN THỨC
           </Button>
           <Button
             onClick={onRestart}
-            className="bg-neon-green hover:bg-neon-green/80 text-black font-bold text-lg px-8 py-6 rounded-xl shadow-[0_0_20px_#00ff77aa]"
+            className="bg-neon-green hover:bg-neon-green/80 text-white font-bold text-lg px-8 py-6 rounded-xl shadow-[0_0_20px_#00ff77aa]"
           >
             CHƠI LẠI
           </Button>
