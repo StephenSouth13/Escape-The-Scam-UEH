@@ -168,7 +168,7 @@ export default function LoginScene({ onStart }: LoginSceneProps) {
                 <motion.h1
                   initial={{ opacity: 0, y: -20 }}
                   animate={{ opacity: 1, y: 0 }}
-                  className="text-5xl md:text-7xl font-bold text-neon-cyan glitch"
+                  className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-bold text-neon-cyan glitch"
                 >
                   ESCAPE THE SCAM
                 </motion.h1>
@@ -234,7 +234,7 @@ export default function LoginScene({ onStart }: LoginSceneProps) {
               {/* Warning message */}
               <div className="border border-danger-red/30 bg-danger-red/10 rounded p-4 text-center">
                 <p className="text-sm text-danger-red font-mono">
-                  ⚠ CẢNH BÁO: Trò chơi này chứa nội dung về lừa đảo trực tuyến. Hãy học hỏi và bảo vệ bản thân!
+                  ⚠ CẢNH BÁO: Trò chơi này chứa nội dung về lừa ��ảo trực tuyến. Hãy học hỏi và bảo vệ bản thân!
                 </p>
               </div>
             </div>
