@@ -107,9 +107,9 @@ export default function ChatQuizPopup({ question, onAnswer, avatarUrl }: ChatQui
         {/* Chat container */}
         <div className="glass-panel rounded-lg overflow-hidden border-2 border-primary/50 shadow-2xl">
           {/* Header */}
-          <div className="bg-gradient-to-r from-danger-red/20 to-neon-magenta/20 border-b border-primary/30 p-2 xs:p-3 sm:p-4">
-            <div className="flex items-center gap-2 sm:gap-3">
-              <div className="w-7 h-7 xs:w-8 xs:h-8 sm:w-10 sm:h-10 rounded-full bg-danger-red/30 flex items-center justify-center text-base xs:text-lg sm:text-2xl overflow-hidden flex-shrink-0">
+          <div className="bg-gradient-to-r from-danger-red/20 to-neon-magenta/20 border-b border-primary/30 p-1.5 xs:p-2 sm:p-3 md:p-4">
+            <div className="flex items-center gap-1.5 xs:gap-2 sm:gap-3">
+              <div className="w-6 h-6 xs:w-7 xs:h-7 sm:w-9 sm:h-9 md:w-10 md:h-10 rounded-full bg-danger-red/30 flex items-center justify-center text-sm xs:text-base sm:text-xl md:text-2xl overflow-hidden flex-shrink-0">
                 {avatarUrl ? (
                   <img src={avatarUrl} alt="avatar" className="w-full h-full object-cover" />
                 ) : (
@@ -117,8 +117,8 @@ export default function ChatQuizPopup({ question, onAnswer, avatarUrl }: ChatQui
                 )}
               </div>
               <div className="min-w-0 flex-1">
-                <div className="font-bold text-xs xs:text-sm sm:text-base text-foreground truncate">Kẻ Lừa Đảo</div>
-                <div className="text-xs text-neon-green">● Hoạt động</div>
+                <div className="font-bold text-[11px] xs:text-xs sm:text-sm md:text-base text-foreground truncate">Kẻ Lừa Đảo</div>
+                <div className="text-[10px] xs:text-xs text-neon-green">● Hoạt động</div>
               </div>
             </div>
           </div>
