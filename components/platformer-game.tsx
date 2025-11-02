@@ -1021,7 +1021,7 @@ export default function PlatformerGame({
           <div className="glass-panel rounded-lg p-3 sm:p-6 w-full max-w-sm sm:max-w-2xl max-h-[90vh] overflow-y-auto space-y-3 sm:space-y-4">
             <h2 className="text-lg sm:text-2xl font-bold text-neon-cyan">🎮 HƯỚNG DẪN CHƠI</h2>
 
-            <div className="space-y-2 sm:space-y-3 text-[11px] sm:text-sm">
+            <div className="space-y-2 sm:space-y-3 text-[11px] sm:text-sm leading-relaxed">
               <div>
                 <h3 className="font-bold text-neon-green mb-1">�� Mục Tiêu:</h3>
                 <p>Vượt qua 4 tầng khách sạn, trả lời câu hỏi về an to��n mạng, và giải cứu Linh!</p>
@@ -1059,7 +1059,7 @@ export default function PlatformerGame({
               <div>
                 <h3 className="font-bold text-neon-yellow mb-1">��� Mẹo Chơi:</h3>
                 <ul className="list-disc list-inside space-y-1">
-                  <li>Quan sát kỹ màu sắc để phân biệt vật thể</li>
+                  <li>Quan sát kỹ màu sắc đ��� phân biệt vật thể</li>
                   <li>Kẻ địch đỏ sẽ nhấp nháy khi bạn ở gần - hãy cẩn thận!</li>
                   <li>Thu thập rương để có thêm mạng và vật phẩm hỗ trợ</li>
                   <li>Trả lời đúng câu hỏi để tăng Cyber IQ và mở portal</li>
