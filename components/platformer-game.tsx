@@ -1027,7 +1027,7 @@ export default function PlatformerGame({
             <div className="space-y-2 sm:space-y-3 text-[11px] sm:text-sm leading-relaxed">
               <div>
                 <h3 className="font-bold text-neon-green mb-1">�� Mục Tiêu:</h3>
-                <p>Vượt qua 4 tầng khách sạn, trả lời câu hỏi về an to��n mạng, và giải cứu Linh!</p>
+                <p>Vượt qua 4 tầng khách sạn, trả lời câu hỏi về an tòan mạng, và giải cứu Linh!</p>
               </div>
 
               <div>
