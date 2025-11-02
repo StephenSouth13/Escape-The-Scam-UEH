@@ -129,7 +129,7 @@ export default function TutorialPopup({ onClose }: TutorialPopupProps) {
 
           {/* Levels */}
           <div className="space-y-2">
-            <h3 className="text-xl font-bold text-neon-magenta flex items-center gap-2">🏢 6 TẦNG KHÁCH SẠN</h3>
+            <h3 className="text-xl font-bold text-neon-magenta flex items-center gap-2">🏢 4 TẦNG KHÁCH SẠN</h3>
             <div className="space-y-2 text-sm">
               <div className="glass-panel rounded p-3">
                 <span className="font-bold text-neon-cyan">Tầng 1:</span> Phishing Lobby - Học cách nhận diện email lừa
@@ -144,12 +144,8 @@ export default function TutorialPopup({ onClose }: TutorialPopupProps) {
               <div className="glass-panel rounded p-3">
                 <span className="font-bold text-neon-cyan">Tầng 4:</span> Deepfake Floor - Nhận diện video/audio giả
               </div>
-              <div className="glass-panel rounded p-3">
-                <span className="font-bold text-neon-cyan">Tầng 5:</span> Blackmail Chamber - Đối phó với tống tiền
-              </div>
-              <div className="glass-panel rounded p-3">
-                <span className="font-bold text-neon-cyan">Tầng 6:</span> AI Boss Battle - Chiến đấu với AI lừa đảo
-              </div>
+             
+              
             </div>
           </div>
 
