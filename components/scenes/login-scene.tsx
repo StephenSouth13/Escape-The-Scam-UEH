@@ -130,8 +130,8 @@ export default function LoginScene({ onStart }: LoginSceneProps) {
                   transition={{ duration: 0.8 }}
                   className="space-y-6"
                 >
-                  <p className="text-3xl font-bold text-neon-cyan">Bạn có đủ can đảm không?</p>
-                  <p className="text-xl text-neon-magenta">Hãy vượt qua 4 tầng để giải cứu cô ấy!</p>
+                  <p className="text-lg sm:text-2xl md:text-3xl font-bold text-neon-cyan">Bạn có đủ can đảm không?</p>
+                  <p className="text-xs sm:text-base md:text-xl text-neon-magenta">Hãy vượt qua 4 tầng để giải cứu cô ấy!</p>
                 </motion.div>
               )}
             </div>
